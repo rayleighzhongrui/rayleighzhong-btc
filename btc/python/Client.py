@@ -5,23 +5,26 @@
 
 from OkcoinSpotAPI import OKCoinSpot
 from OkcoinFutureAPI import OKCoinFuture
+import ssl
+
 
 #初始化apikey，secretkey,url
 apikey = 'XXXX'
 secretkey = 'XXXXX'
-okcoinRESTURL = 'www.okcoin.com'   #请求注意：国内账号需要 修改为 www.okcoin.cn  
+okcoinRESTURL = 'www.okex.com'   #请求注意：国内账号需要 修改为 www.okcoin.cn  
 
 #现货API
 okcoinSpot = OKCoinSpot(okcoinRESTURL,apikey,secretkey)
 
 #期货API
 okcoinFuture = OKCoinFuture(okcoinRESTURL,apikey,secretkey)
+#set ssl config 总是报SSL错误，没办法只能加上下面这句，不验证SSL了。
+ssl._create_default_https_context = ssl._create_unverified_context
+#print (u' 现货行情 ')
+#print (okcoinSpot.ticker('btc_usd'))
 
-print (u' 现货行情 ')
-print (okcoinSpot.ticker('btc_usd'))
-
-print (u' 现货深度 ')
-print (okcoinSpot.depth('btc_usd'))
+#print (u' 现货深度 ')
+#print (okcoinSpot.depth('btc_usd'))
 
 #print (u' 现货历史交易信息 ')
 #print (okcoinSpot.trades())
@@ -47,8 +50,8 @@ print (okcoinSpot.depth('btc_usd'))
 #print (u' 现货历史订单信息查询 ')
 #print (okcoinSpot.orderHistory('ltc_usd','0','1','2'))
 
-#print (u' 期货行情信息')
-#print (okcoinFuture.future_ticker('ltc_usd','this_week'))
+print (u' 期货行情信息')
+print (okcoinFuture.future_ticker('btc_usd','this_week'))
 
 #print (u' 期货市场深度信息')
 #print (okcoinFuture.future_depth('btc_usd','this_week','6'))
