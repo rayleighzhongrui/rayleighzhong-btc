@@ -4,7 +4,6 @@ from OkcoinSpotAPI import OKCoinSpot
 from OkcoinFutureAPI import OKCoinFuture
 import time
 import ssl
-import numpy as np
 import pandas as pd
 
 apikey = 'XXX'

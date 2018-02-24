@@ -45,6 +45,6 @@ job_defaults = {
 }
 # 定义BlockingScheduler
 sched = BlockingScheduler(job_defaults = job_defaults)
-sched.add_job(job, 'interval', seconds=1)
+sched.add_job(job, 'interval', seconds=5)
 
 sched.start()
